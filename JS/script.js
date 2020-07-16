@@ -30,6 +30,8 @@ const createList = () => {
     .forEach((country, index) => {
       // Create new li element
       const item = document.createElement('li');
+      // Add class to new li element
+      item.className = 'list-item'
       // Set attribute
       item.setAttribute('data-index', index);
       // Insert innerHTML
