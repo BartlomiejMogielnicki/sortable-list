@@ -18,6 +18,44 @@ const biggestCountries = [
 // Create countries list
 const listItems = [];
 
+// Drag/drop functions
+const dragStart = () => {
+
+};
+
+const dragOver = () => {
+
+};
+
+const dragEnter = () => {
+
+};
+
+const dragLeave = () => {
+
+};
+
+const dragDrop = () => {
+
+};
+
+// Add eventlisteners
+const addEventListeners = () => {
+  const listItems = document.querySelectorAll('.list-item')
+  const draggables = document.querySelectorAll('.item');
+
+  draggables.forEach(item => {
+    item.addEventListener('dragstart', dragStart)
+  });
+
+  listItems.forEach(item => {
+    item.addEventListener('dragover', dragOver)
+    item.addEventListener('dragenter', dragEnter)
+    item.addEventListener('dragleave', dragLeave)
+    item.addEventListener('drop', dragDrop)
+  });
+};
+
 // Insert list into DOM
 const createList = () => {
   [...biggestCountries]
@@ -47,6 +85,9 @@ const createList = () => {
       // Insert item into DOM
       list.appendChild(item);
     });
+
+  addEventListeners();
 };
 
 createList();
+

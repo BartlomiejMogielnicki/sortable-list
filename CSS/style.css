@@ -35,6 +35,14 @@ h1 {
     border: 1px solid rgba(0,0,0,.3);
 }
 
+.list-item.right .country-name {
+    color: green;
+}
+
+.list-item.wrong .country-name {
+    color: red;
+}
+
 .number {
     display: block;
     height: 50px;
