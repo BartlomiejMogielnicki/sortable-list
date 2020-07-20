@@ -2,6 +2,7 @@ const list = document.getElementById('list');
 const checkBtn = document.getElementById('checkBtn');
 
 let counter = 0;
+let pickedIndex = 0;
 
 // Define biggest countries
 const biggestCountries = [
@@ -21,7 +22,9 @@ const biggestCountries = [
 const listItems = [];
 
 // Drag/drop functions
-function dragStart() {
+function dragStart(e) {
+  // Read data-index from dragged item
+  pickedIndex = +e.target.closest('li').getAttribute('data-index');
 };
 
 function dragOver(e) {
@@ -42,9 +45,24 @@ function dragLeave(e) {
   }
 };
 
-function dragDrop() {
+function dragDrop(e) {
   counter = 0;
   this.classList.remove('over');
+
+  // Read data-index from dropfield
+  const dropIndex = +e.target.closest('li').getAttribute('data-index');
+
+  changeItems(dropIndex)
+};
+
+// Change list items after dropping
+function changeItems(dropIndex) {
+
+  const itemOne = listItems[pickedIndex].querySelector('.item');
+  const itemTwo = listItems[dropIndex].querySelector('.item');
+
+  listItems[pickedIndex].appendChild(itemTwo);
+  listItems[dropIndex].appendChild(itemOne);
 };
 
 // Add eventlisteners
