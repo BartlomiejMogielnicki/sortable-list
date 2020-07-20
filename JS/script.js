@@ -1,5 +1,5 @@
 const list = document.getElementById('list');
-const checkBtn = document.getElementById('checkBtn');
+const checkBtn = document.getElementById('check-btn');
 
 let counter = 0;
 let pickedIndex = 0;
@@ -65,6 +65,23 @@ function changeItems(dropIndex) {
   listItems[dropIndex].appendChild(itemOne);
 };
 
+// Check correct order
+function checkOrder() {
+  listItems.forEach((item, index) => {
+    const country = item.querySelector('.item').innerText;
+
+    // Clear right/wrong classes
+    item.className = 'list-item';
+
+    // Set correct classname
+    if (country === biggestCountries[index]) {
+      item.classList.add('right')
+    } else {
+      item.classList.add('wrong')
+    }
+  })
+};
+
 // Add eventlisteners
 const addEventListeners = () => {
   const listItems = document.querySelectorAll('.list-item');
@@ -116,4 +133,6 @@ const createList = () => {
 };
 
 createList();
+
+checkBtn.addEventListener('click', checkOrder);
 
