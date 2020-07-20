@@ -1,6 +1,8 @@
 const list = document.getElementById('list');
 const checkBtn = document.getElementById('checkBtn');
 
+let counter = 0;
+
 // Define biggest countries
 const biggestCountries = [
   'Russia',
@@ -19,29 +21,35 @@ const biggestCountries = [
 const listItems = [];
 
 // Drag/drop functions
-const dragStart = () => {
-
+function dragStart() {
 };
 
-const dragOver = () => {
-
+function dragOver(e) {
+  e.preventDefault();
 };
 
-const dragEnter = () => {
-
+function dragEnter() {
+  counter++;
+  if (counter !== 0) {
+    this.classList.add('over');
+  }
 };
 
-const dragLeave = () => {
-
+function dragLeave(e) {
+  counter--;
+  if (counter === 0) {
+    this.classList.remove('over');
+  }
 };
 
-const dragDrop = () => {
-
+function dragDrop() {
+  counter = 0;
+  this.classList.remove('over');
 };
 
 // Add eventlisteners
 const addEventListeners = () => {
-  const listItems = document.querySelectorAll('.list-item')
+  const listItems = document.querySelectorAll('.list-item');
   const draggables = document.querySelectorAll('.item');
 
   draggables.forEach(item => {
@@ -69,7 +77,7 @@ const createList = () => {
       // Create new li element
       const item = document.createElement('li');
       // Add class to new li element
-      item.className = 'list-item'
+      item.className = 'list-item';
       // Set attribute
       item.setAttribute('data-index', index);
       // Insert innerHTML

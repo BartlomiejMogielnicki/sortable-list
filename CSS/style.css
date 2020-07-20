@@ -33,6 +33,11 @@ h1 {
     justify-content: space-between;
     align-items: center;
     border: 1px solid rgba(0,0,0,.3);
+    list-style: none;
+}
+
+.list-item.over {
+    background-color: rgba(0,0,0,.2);
 }
 
 .list-item.right .country-name {
@@ -60,6 +65,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid rgba(0,0,0,.3);
     cursor: pointer;
 }
 
